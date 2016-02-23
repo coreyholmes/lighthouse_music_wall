@@ -1,1 +1,53 @@
-<h1>Home Page</h1>
+
+
+<% @songs.each do |song| %>
+  <ul class="collection col m6 offset-m6">
+    <li class="collection-item avatar">
+      <div class="row">
+        <div class="col s1 vote">
+          <!-- <div class=""> -->
+            <img src="images/user.png" class="rounded"><br><br>
+            <a href="/"><i class="fa fa-chevron-up"></i></a>
+            <p><%= session[:vote] %></p>
+            <a href="/"><i class="fa fa-chevron-down"></i></a>
+          <!-- </div> -->
+        </div>
+          <div class="col s2">
+          <span class="title">
+            <strong><a class="dark" href="<%= song.url %>" target="_blank"><%= song.name %></a></strong>
+          </span>
+          <p><%= song.artist %></p><br>
+          <hr>
+         <div class="card-action">
+          <div class="chip">
+            <div class="rating">
+              <span><i class="fa fa-star-o"></i></span>
+              <span><i class="fa fa-star-o"></i></span>
+              <span><i class="fa fa-star-o"></i></span>
+              <span><i class="fa fa-star-o"></i></span>
+              <span><i class="fa fa-star-o"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="sharing">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=<%= song.url %>%3Futm_source%3Dsoundcloud%26utm_campaign%3Dshare%26utm_medium%3Dfacebook"><i class="fa fa-facebook-square fa-lg"></i></a>
+          <a href="https://twitter.com/intent/tweet?text=<%= song.url %>%3Futm_source%3Dsoundcloud%26utm_campaign%3Dshare%26utm_medium%3Dtwitter&original_referer=https%3A%2F%2Fsoundcloud.com%2F"><i class="fa fa-twitter-square fa-lg"></i></a>
+
+          <a href="mailto:?&subject=<%= song.name %> by <%= song.artist %>&body=<%= song.url %>"><i class="fa fa-envelope-square fa-lg"></i></a>
+        </div>
+      </div> <!-- /col-3 -->
+
+        <div class="col s9">
+          <iframe width="100%" height="120" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=<%= song.url %>&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>
+          <div class="row">
+            <p class="right uploaded-date">
+              <strong>Created:</strong> <%= song.created_at.strftime("%Y-%d-%m") %>&nbsp&nbsp
+              <strong>Updated:</strong> <%= song.updated_at.strftime("%Y-%d-%m") %>
+            </p>
+          </div>
+        </div> <!-- /col-9 -->
+      </div> <!-- /row -->
+    </li>
+  </ul>
+<% end %>
+

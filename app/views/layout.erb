@@ -7,22 +7,42 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/stylesheets/normalize.css">
-
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
-  <!--
-    application.css is where you put your styles
-  -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- application.css is where you put your styles -->
   <link rel="stylesheet" href="/stylesheets/application.css">
 
-  
-  
-  <title></title>
+  <title>Music Wall</title>
 </head>
 <body>
-  <%= yield %>
-  
+
+  <nav class="orange accent-3">
+    <div class="nav-wrapper container">
+      <a href="/"><img class="left logo"src="images/play.png"></a>
+      <ul class="right">
+        <li><a class="waves-effect waves-orange white btn post-btn" href="/new">Post Song</a></li>
+        <img src="images/user.png" alt="" class="circle user-img">
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <%= yield %>
+    </div>
+  </div>
+ 
+  <footer class="page-footer white">
+    <div class="footer-copyright">
+      <div class="container">
+      <span class="dark">© 2016 Google Play</span>
+
+      </div>
+    </div>
+  </footer>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/javascript/application.js"></script>
    <!-- Compiled and minified JavaScript -->
