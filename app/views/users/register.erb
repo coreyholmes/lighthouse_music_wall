@@ -1,0 +1,50 @@
+<% if @users && @users.errors.any? %>
+  <div>
+    <strong>Oops, you forgot something.</strong>
+    <ul>
+      <% @users.errors.each do |user| %>
+        <li><%= user %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div id="add-music" class="row">
+  <div id="register-page" class="col m6">
+    <div class=" collection-item center">
+    <h4>Join Google Play</h4>
+      <form id="top-form" action="/new-user", method="post">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="first_name" placeholder= "First Name" value="<%= @users && @users.first_name %>">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="last_name" placeholder="Last Name" value="<%= @users && @users.last_name %>">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="email" placeholder="Email" value="<%= @users && @users.email %>">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="password" name="password" placeholder="Password" value="<%= @users && @users.password %>">
+          </div>
+        </div>
+
+          <input type="submit" value="Submit" class="waves-effect waves-light orange accent-3 btn">
+      </form>
+    </div>
+    <br>
+  </div>
+
+  <div class="col m6">
+    <img id="register-img" src="images/play-pic.png">
+  </div>
+</div>
+<div class="clearfix"></div>

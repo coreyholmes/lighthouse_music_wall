@@ -22,8 +22,20 @@
     <div class="nav-wrapper container">
       <a href="/"><img class="left logo"src="images/play.png"></a>
       <ul class="right">
-        <li><a class="waves-effect waves-orange white btn post-btn" href="/new">Post Song</a></li>
-        <img src="images/user.png" alt="" class="circle user-img">
+        <% if current_user %>
+          <%= current_user.first_name %> <%= current_user.last_name %>
+          <!-- <img src="images/user.png" class="circle user-img"> -->
+          <a class="waves-effect waves-orange white dark btn" href="/logout">Logout</a>
+          <% else %>
+            <% if @login_btn == "display" %>
+              <a class="waves-effect waves-orange white dark btn" href="/login">Login</a>
+            <% end %>
+        <% end %>
+        <% if @add_music == "display" %>
+          <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 10px; right: 70px;">
+            <a class="btn-floating btn-large waves-effect waves-light red" style="bottom: 45px; right: 24px;" href="/new"><i class="fa fa-plus"></i></a>
+          </div>
+        <% end %>
       </ul>
     </div>
   </nav>

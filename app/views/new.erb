@@ -8,26 +8,37 @@
     </ul>
   </div>
 <% end %>
+<div id="add-music" class="row">
+  <div id="new-music" class="col m6">
+    <div class=" collection-item">
+      <form id="top-form" action="/new", method="post">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="name" placeholder= "Name" value="<%= @songs && @songs.name %>">
+          </div>
+        </div>
 
-<form action="/new", method="post">
-  <div class="row">
-    <div class="input-field col s12">
-      <input type="text" name="name" placeholder= "Name" value="<%= @songs && @songs.name %>">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="artist" placeholder="Artist" value="<%= @songs && @songs.artist %>">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="url" placeholder="SoundCloud URL" value="<%= @songs && @songs.url %>">
+          </div>
+        </div>
+
+          <input type="submit" value="Submit" class="waves-effect waves-light orange accent-3 btn">
+      </form>
+
     </div>
+    <br><br><a class="dark-link" href="/"><i class="fa fa-arrow-left"></i> Go Back</a>
   </div>
 
-  <div class="row">
-    <div class="input-field col s12">
-      <input type="text" name="artist" placeholder="Artist" value="<%= @songs && @songs.artist %>">
-    </div>
+  <div class="col m6">
+    <img id="side-img" src="images/play-pic.png">
   </div>
-
-  <div class="row">
-    <div class="input-field col s12">
-      <input type="text" name="url" placeholder="SoundCloud URL" value="<%= @songs && @songs.url %>">
-    </div>
-  </div>
-
-    <input type="submit" value="Submit" class="waves-effect waves-light orange accent-3 btn">
-</form>
-
+</div>
+<div class="clearfix"></div>
