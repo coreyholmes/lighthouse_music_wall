@@ -23,12 +23,16 @@
       <a href="/"><img class="left logo"src="images/play.png"></a>
       <ul class="right">
         <% if current_user %>
-          <%= current_user.first_name %> <%= current_user.last_name %>
+          Welcome back, <%= current_user.first_name %> <%#= current_user.last_name %>
+          <a  id="power-off" href="/logout"><i class="fa fa-power-off fa-2x"></i></a>
           <!-- <img src="images/user.png" class="circle user-img"> -->
-          <a class="waves-effect waves-orange white dark btn" href="/logout">Logout</a>
+          <!-- <a class="waves-effect waves-orange white dark btn" href="/logout"><i class="fa fa-power-off"></i>Logout</a> -->
           <% else %>
             <% if @login_btn == "display" %>
               <a class="waves-effect waves-orange white dark btn" href="/login">Login</a>
+            <% end %>
+            <% if @register_btn == "display" %>
+              <a class="waves-effect waves-orange white dark btn" href="/register">Sign Up</a>
             <% end %>
         <% end %>
         <% if @add_music == "display" %>
@@ -55,10 +59,9 @@
     </div>
   </footer>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/javascript/application.js"></script>
-   <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="/javascript/application.js"></script>
 </body>
 </html>
 

@@ -13,10 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20160222172500) do
 
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string   "name"
     t.string   "artist"
     t.string   "url"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,10 +41,3 @@ ActiveRecord::Schema.define(version: 20160222172500) do
   end
 
 end
-
-
-
-# votes
-
-# reference user_id
-# reference song_id

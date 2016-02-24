@@ -4,6 +4,7 @@ class SongsTable < ActiveRecord::Migration
       t.string :name
       t.string :artist
       t.string :url
+      t.references :user
       t.timestamps null: false
     end
   end

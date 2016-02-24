@@ -6,6 +6,25 @@ h4 {
   color: #ffab40;
 }
 
+h5 {
+  line-height: 0;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+.delete {
+  border: none;
+  background: none;
+  color: #039BE5;
+  font-size: 11px;
+  float: right;
+  margin-top: -2px;
+  margin-right: 5px;
+}
+
+.small {
+  font-size: 12px;
+}
 .move-up {
   margin-top: -20px;
 }
@@ -22,6 +41,10 @@ h4 {
 width: 100%;
 }
 
+#call-to-action {
+  color: #757575;
+  margin-bottom: -20px;
+}
 .dark-link {
   color: #757575;
 }
@@ -80,10 +103,26 @@ margin-left: 70px;
   color: #ff5500;
 }
 
+.hidden-form {
+  visibility: hidden;
+}
+
 /* label color */
 .input-field label {
  color: #ffab40;
 }
+
+textarea:focus {
+  border-bottom: 1px solid #ffab40 !important;
+  -webkit-box-shadow: 0 1px 0 0 #ffab40 !important;
+  -moz-box-shadow: 0 1px 0 0 #ffab40 !important;
+  box-shadow: 0 1px 0 0 #ffab40 !important;
+}
+
+label[for=textarea1] {
+  color: #ffab40 !important;
+}
+
 /* label focus color */
 .input-field input[type=text]:focus + label {
  color: #ffab40;
@@ -135,26 +174,55 @@ margin-left: 70px;
 
 /*Uploaded Date*/
 .uploaded-date {
-font-size: 10px;
-padding-right: 20px;
-padding-bottom: 8px;
+  font-size: 10px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+}
+
+.review {
+  width: 110px;
+  height: 25px;
+  font-size: 12px;
+  background-color: white;
+  z-index: 2;
+  position:relative;
+  border: solid 1px #e0e0e0;
+  border-top: none;
+  border-radius: 2px;
+  border-top-right-radius: 0px; 
+  text-align: center;
+  margin-top: -16px;
+}
+
+#power-off {
+  float: right;
+  /*color: #F44336;*/
+}
+
+#power-off:hover {
+  background: none;
+  color: #757575;
+}
+
+.review-form {
+  padding: 10px;
 }
 
 /* Star Rating */
 .rating {
-  font-family: FontAwesome;
-unicode-bidi: bidi-override;
-direction: rtl;
+  font-family: FontAwesome;
+  unicode-bidi: bidi-override;
+  direction: rtl;
 }
 .rating > span {
-display: inline-block;
-position: relative;
-width: 1.1em;
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
 }
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
-font-family: FontAwesome;
- content: "\f005";
- color: #ffab40;
- position: absolute;
+  font-family: FontAwesome;
+  content: "\f005";
+  color: #ffab40;
+  position: absolute;
 }

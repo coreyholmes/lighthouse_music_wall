@@ -1,8 +1,8 @@
-<% if @songs && @songs.errors.any? %>
+<% if @song && @song.errors.any? %>
   <div>
     <strong>Oops, you forgot something.</strong>
     <ul>
-      <% @songs.errors.each do |song| %>
+      <% @song.errors.each do |song| %>
         <li><%= song %></li>
       <% end %>
     </ul>
@@ -14,22 +14,22 @@
       <form id="top-form" action="/new", method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="name" placeholder= "Name" value="<%= @songs && @songs.name %>">
+            <input type="text" name="name" placeholder= "Name" value="<%= @song && @song.name %>">
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="artist" placeholder="Artist" value="<%= @songs && @songs.artist %>">
+            <input type="text" name="artist" placeholder="Artist" value="<%= @song && @song.artist %>">
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="url" placeholder="SoundCloud URL" value="<%= @songs && @songs.url %>">
+            <input type="text" name="url" placeholder="SoundCloud URL" value="<%= @song && @song.url %>">
           </div>
         </div>
-
+        
           <input type="submit" value="Submit" class="waves-effect waves-light orange accent-3 btn">
       </form>
 

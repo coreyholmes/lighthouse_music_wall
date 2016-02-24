@@ -1,25 +1,40 @@
+
+# Current User Helper Method
 helpers do 
   def current_user
     if session[:user_id]
-      Users.find(session[:user_id])
+      User.find(session[:user_id])
     end
   end
 end
 
+# -------------------------------------
+# Home / Index Page
+# -------------------------------------
+
 # Homepage (Root path)
 get '/' do
-  @songs = Songs.all
-  @add_music = "display"
-  session[:vote] = 0
-  # if session[:vote]
-  #     session[:vote] += 1
-  #   else
-  #     session[:vote] = 0
-  # end
-  erb :index
+  if current_user
+    @reviews = Review.all
+    @songs = Song.all
+    @add_music = "display"
+    # session[:vote] = 0
+    # if session[:vote]
+    #     session[:vote] += 1
+    #   else
+    #     session[:vote] = 0
+    # end
+    erb :index
+  else
+    redirect '/login'
+  end
 end
 
-# Voting
+# -------------------------------------
+# Song Voting
+# -------------------------------------
+
+# Song Voting
 get '/upvote' do
 @upvoted = false
   if @upvoted == false
@@ -31,35 +46,46 @@ get '/upvote' do
   end
 end
 
-# Register User
+# -------------------------------------
+# Register Page
+# -------------------------------------
+
+# Register Page
 get '/register' do
   @login_btn = "display"
   erb :'users/register'
 end
 
+# Submit Register Form
 post '/new-user' do
-  @users = Users.new(
+  @user = User.new(
     first_name:   params[:first_name],
     last_name: params[:last_name],
     email:  params[:email],
     password:  params[:password]
   )
-  if @users.save
+  if @user.save
     redirect '/'
   else
     erb :'users/register'
   end
 end
 
-# Login User
+# -------------------------------------
+# Login
+# -------------------------------------
+
+# Login Page
 get '/login' do
+  @register_btn = "display"
   erb :'users/login'
 end
 
+# Submit Login Form
 post '/login' do
   @email = params[:email]
   @password = params[:password]
-  @user = Users.where(email: @email, password: @password).first
+  @user = User.where(email: @email, password: @password).first
   if @user
     session[:user_id] = @user.id
     redirect '/'
@@ -68,27 +94,71 @@ post '/login' do
   end
 end
 
+# -------------------------------------
+# Logout
+# -------------------------------------
+
 # Logout User
 get '/logout' do
   session.clear
-  redirect '/register'
+  redirect '/login'
 end
 
-# Adding new songs to the wall
+# -------------------------------------
+# Add New Song
+# -------------------------------------
+
+# Add New Song Page
 get '/new' do
   erb :new
 end
 
+# Submit New Song Form
 post '/new' do
-  @songs = Songs.new(
-    name:   params[:name],
+  @song = Song.new(
+    name: params[:name],
     artist: params[:artist],
-    url:  params[:url]
+    url: params[:url],
+    user_id: params[:url]
   )
-  if @songs.save
+  if @song.save
     redirect '/'
   else
     erb :new
   end
 end
+
+# -------------------------------------
+# Delete Review
+# -------------------------------------
+
+delete '/review/delete/:id' do
+  review = Review.find(params[:review])
+  if review.destroy
+    redirect '/'
+  else
+    redirect '/new'
+  end
+end
+
+# -------------------------------------
+# Song Reviews
+# -------------------------------------
+
+# Add a Review
+post '/new_review' do
+  @review = Review.new(
+    title: params[:title],
+    content: params[:content],
+    song_id: params[:song_id],
+    user_id: params[:user_id]
+    )
+  if @review.save
+    redirect '/'
+  else
+    erb :new
+  end
+end
+
+
 

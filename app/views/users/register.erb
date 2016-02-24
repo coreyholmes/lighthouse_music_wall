@@ -1,8 +1,8 @@
-<% if @users && @users.errors.any? %>
+<% if @user && @user.errors.any? %>
   <div>
     <strong>Oops, you forgot something.</strong>
     <ul>
-      <% @users.errors.each do |user| %>
+      <% @user.errors.each do |user| %>
         <li><%= user %></li>
       <% end %>
     </ul>
@@ -12,32 +12,33 @@
   <div id="register-page" class="col m6">
     <div class=" collection-item center">
     <h4>Join Google Play</h4>
+    <p id="call-to-action">Get <strong>Free Access</strong> To 30 Million Songs</p>
       <form id="top-form" action="/new-user", method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="first_name" placeholder= "First Name" value="<%= @users && @users.first_name %>">
+            <input type="text" name="first_name" placeholder= "First Name" value="<%= @user && @user.first_name %>">
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="last_name" placeholder="Last Name" value="<%= @users && @users.last_name %>">
+            <input type="text" name="last_name" placeholder="Last Name" value="<%= @user && @user.last_name %>">
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="email" placeholder="Email" value="<%= @users && @users.email %>">
+            <input type="text" name="email" placeholder="Email" value="<%= @user && @user.email %>">
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input type="password" name="password" placeholder="Password" value="<%= @users && @users.password %>">
+            <input type="password" name="password" placeholder="Password" value="<%= @user && @user.password %>">
           </div>
         </div>
 
-          <input type="submit" value="Submit" class="waves-effect waves-light orange accent-3 btn">
+          <input type="submit" value="Lets Go!" class="waves-effect waves-light orange accent-3 btn">
       </form>
     </div>
     <br>
